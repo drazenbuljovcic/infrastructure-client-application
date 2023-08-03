@@ -6,16 +6,21 @@ const callApplicationServerThroughProxy = async () => {
   }).then((res) => res.json());
 };
 
-console.log(process.env.APPLICATION_SERVER_HOST);
-console.log(process.env.REVERSE_PROXY_HOST);
-
 const Home = async () => {
-  await callApplicationServerThroughProxy();
+  let didMyRequestGoThrough = false;
+  try {
+    await callApplicationServerThroughProxy();
+    didMyRequestGoThrough = true;
+  } catch (e) {
+    console.error(e);
+  }
 
   return (
     <>
       <span>HERE I AM!!</span>
       <span>ROCK YOU LIKE A HURRICANEEE!!!</span>
+
+      <p>Did my request go through: {String(didMyRequestGoThrough)}</p>
     </>
   );
 };
