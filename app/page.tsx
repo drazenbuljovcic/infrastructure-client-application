@@ -1,5 +1,5 @@
 const callApplicationServerThroughProxy = async () => {
-  const path = `${process.env.REVERSE_PROXY_HOST}/distributed-information-node?sleep=1000`;
+  const path = `${process.env.REVERSE_PROXY_HOST}/?sleep=1000`;
 
   return fetch(path, {
     cache: "no-cache",
