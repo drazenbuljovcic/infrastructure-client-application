@@ -12,13 +12,12 @@ import { ZipkinExporter } from "@opentelemetry/exporter-zipkin";
 
 import { SemanticResourceAttributes } from "@opentelemetry/semantic-conventions";
 
-const provider = new NodeTracerProvider();
-// {
-//   resource: new Resource({
-//     [SemanticResourceAttributes.SERVICE_NAME]:
-//       process.env.NEXT_PUBLIC_OTEL_SERVICE_NAME!,
-//   }),
-// }
+const provider = new NodeTracerProvider({
+  resource: new Resource({
+    [SemanticResourceAttributes.SERVICE_NAME]:
+      process.env.NEXT_PUBLIC_OTEL_SERVICE_NAME!,
+  }),
+});
 
 provider.addSpanProcessor(new BatchSpanProcessor(new ConsoleSpanExporter()));
 provider.addSpanProcessor(
