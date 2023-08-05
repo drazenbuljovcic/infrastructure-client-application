@@ -1,23 +1,44 @@
-import { SpanKind } from "@opentelemetry/exporter-zipkin/build/src/types";
 import serverTracer from "./_utils/telemetry/server.tracer";
-import { trace, context } from "@opentelemetry/api";
+import {
+  trace,
+  context,
+  propagation,
+  SpanStatusCode,
+  SpanKind,
+} from "@opentelemetry/api";
 
 const callApplicationServerThroughProxy = async () => {
-  // const activeSpanContext = context.active();
-  // const span = trace.getSpan(activeSpanContext);
   const path = `${process.env.REVERSE_PROXY_HOST}/?sleep=1000`;
-  // span?.setAttribute("path", path);
-  serverTracer.startActiveSpan(path, { attributes: { path } }, (span) => {
-    try {
-      fetch(path, {
-        cache: "no-cache",
-      }).then((res) => res.json());
-    } catch (e) {
-      console.error(e);
-    } finally {
-      span?.end();
-    }
-  });
+
+  const parentContext = context.active();
+  const span = serverTracer.startSpan(
+    `HTTP ${path}`,
+    {
+      kind: SpanKind.SERVER,
+    },
+    parentContext
+  );
+  const requestContext = trace.setSpan(parentContext, span);
+  const headers = {};
+  propagation.inject(requestContext, headers);
+
+  try {
+    await fetch(path, {
+      cache: "no-cache",
+      headers,
+    }).then((res) => res.json());
+
+    span.setStatus({
+      code: SpanStatusCode.OK,
+    });
+  } catch (e) {
+    span.setStatus({
+      code: SpanStatusCode.ERROR,
+    });
+    console.error(e);
+  } finally {
+    span?.end();
+  }
 };
 
 const Home = async () => {
