@@ -1,9 +1,23 @@
-const callApplicationServerThroughProxy = async () => {
-  const path = `${process.env.REVERSE_PROXY_HOST}/?sleep=1000`;
+import { SpanKind } from "@opentelemetry/exporter-zipkin/build/src/types";
+import serverTracer from "./_utils/telemetry/server.tracer";
+import { trace, context } from "@opentelemetry/api";
 
-  return fetch(path, {
-    cache: "no-cache",
-  }).then((res) => res.json());
+const callApplicationServerThroughProxy = async () => {
+  // const activeSpanContext = context.active();
+  // const span = trace.getSpan(activeSpanContext);
+  const path = `${process.env.REVERSE_PROXY_HOST}/?sleep=1000`;
+  // span?.setAttribute("path", path);
+  serverTracer.startActiveSpan(path, { attributes: { path } }, (span) => {
+    try {
+      fetch(path, {
+        cache: "no-cache",
+      }).then((res) => res.json());
+    } catch (e) {
+      console.error(e);
+    } finally {
+      span?.end();
+    }
+  });
 };
 
 const Home = async () => {
