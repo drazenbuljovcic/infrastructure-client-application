@@ -8,7 +8,8 @@ import {
 } from "@opentelemetry/api";
 
 const callApplicationServerThroughProxy = async () => {
-  const path = `${process.env.REVERSE_PROXY_HOST}/?sleep=1000`;
+  const path = "/distributed-information-node";
+  const url = `${process.env.REVERSE_PROXY_HOST}${path}?sleep=1000`;
 
   const parentContext = context.active();
   const span = serverTracer.startSpan(
@@ -21,9 +22,10 @@ const callApplicationServerThroughProxy = async () => {
   const requestContext = trace.setSpan(parentContext, span);
   const headers = {};
   propagation.inject(requestContext, headers);
+  console.log({ headers });
 
   try {
-    await fetch(path, {
+    await fetch(url, {
       cache: "no-cache",
       headers,
     }).then((res) => res.json());

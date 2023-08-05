@@ -18,7 +18,7 @@ const provider = new NodeTracerProvider({
   }),
 });
 
-provider.addSpanProcessor(new BatchSpanProcessor(new ConsoleSpanExporter()));
+// provider.addSpanProcessor(new BatchSpanProcessor(new ConsoleSpanExporter()));
 provider.addSpanProcessor(
   new BatchSpanProcessor(
     // https://github.com/MetinSeylan/Nestjs-OpenTelemetry/issues/42
