@@ -160,6 +160,11 @@
   "resolved" "https://registry.npmjs.org/@opentelemetry/context-async-hooks/-/context-async-hooks-0.24.0.tgz"
   "version" "0.24.0"
 
+"@opentelemetry/context-async-hooks@1.15.1":
+  "integrity" "sha512-JHPs/o15OO902lI5jkWWPz0JyOpQav7hfOY20MZFH/elq6kSvjBTw5cCu1v7SJwN0Ac3n08fOjYK+jtNlYP0LA=="
+  "resolved" "https://registry.npmjs.org/@opentelemetry/context-async-hooks/-/context-async-hooks-1.15.1.tgz"
+  "version" "1.15.1"
+
 "@opentelemetry/core@^1.0.0", "@opentelemetry/core@1.15.1":
   "integrity" "sha512-V6GoRTY6aANMDDOQ9CiHOiLWEK2b2b3OGZK+zk05Li5merb9jadFeV5ooTSGtjxfxVNMpQUaQERO1cdbdbeEGg=="
   "resolved" "https://registry.npmjs.org/@opentelemetry/core/-/core-1.15.1.tgz"
@@ -204,17 +209,7 @@
     "@opentelemetry/sdk-trace-base" "1.15.1"
     "@opentelemetry/semantic-conventions" "1.15.1"
 
-"@opentelemetry/instrumentation-http@^0.41.1":
-  "integrity" "sha512-fhLBlSxTg+jw5HZVzOvH4tIUQHJkP8L2dyYYXu60sppYZHFVltL/DyfoMErdq5cSn97WHWfRqnbYrG0wlPJedA=="
-  "resolved" "https://registry.npmjs.org/@opentelemetry/instrumentation-http/-/instrumentation-http-0.41.1.tgz"
-  "version" "0.41.1"
-  dependencies:
-    "@opentelemetry/core" "1.15.1"
-    "@opentelemetry/instrumentation" "0.41.1"
-    "@opentelemetry/semantic-conventions" "1.15.1"
-    "semver" "^7.5.1"
-
-"@opentelemetry/instrumentation@^0.41.1", "@opentelemetry/instrumentation@0.41.1":
+"@opentelemetry/instrumentation@^0.41.1":
   "integrity" "sha512-IsOidIIgI7Sg2NhWGYRZRifiv9kLyrxT89hBK1YVPDetuBEBUgFzD5VXdwqwfOKL3kgT4KiERMmLJ8gqig0o1A=="
   "resolved" "https://registry.npmjs.org/@opentelemetry/instrumentation/-/instrumentation-0.41.1.tgz"
   "version" "0.41.1"
@@ -244,12 +239,26 @@
   dependencies:
     "@opentelemetry/core" "0.24.0"
 
+"@opentelemetry/propagator-b3@1.15.1":
+  "integrity" "sha512-Rgzp5CgxSLDLdtiUx/nv+1jkyyU/qbhTqTBxMUvk4fqPfddzQNZyllyJ9IMNp9Xh4pzYlPP5ZBlN5Sw5isjuaw=="
+  "resolved" "https://registry.npmjs.org/@opentelemetry/propagator-b3/-/propagator-b3-1.15.1.tgz"
+  "version" "1.15.1"
+  dependencies:
+    "@opentelemetry/core" "1.15.1"
+
 "@opentelemetry/propagator-jaeger@0.24.0":
   "integrity" "sha512-QXCxBwuSka+vXbBZdumtF7YKO84gwTyKy3GelZV5BPlgWoge0AbLR3DfsO9Beu13pmD+4PyuwMw3LfYsgG1+3g=="
   "resolved" "https://registry.npmjs.org/@opentelemetry/propagator-jaeger/-/propagator-jaeger-0.24.0.tgz"
   "version" "0.24.0"
   dependencies:
     "@opentelemetry/core" "0.24.0"
+
+"@opentelemetry/propagator-jaeger@1.15.1":
+  "integrity" "sha512-27cljZFnbUv5e459e2BhcsHCn2yePYq+07dZNW51e6F05GDWHC86fpwdh+WKvrfKSRMddUMkufHyoBWxtUN/Vg=="
+  "resolved" "https://registry.npmjs.org/@opentelemetry/propagator-jaeger/-/propagator-jaeger-1.15.1.tgz"
+  "version" "1.15.1"
+  dependencies:
+    "@opentelemetry/core" "1.15.1"
 
 "@opentelemetry/resource-detector-aws@^1.3.0":
   "integrity" "sha512-fF1cMnR2ObMThJVkF4nUkTmmIbzMkrKs3ibEALs6sD3b6VqCZ8NafnX/GS+VpmguVevyGqFr/mLSdehNkm9ABg=="
@@ -303,7 +312,7 @@
     "@opentelemetry/resources" "0.25.0"
     "lodash.merge" "^4.6.2"
 
-"@opentelemetry/sdk-trace-base@^1.15.1", "@opentelemetry/sdk-trace-base@1.15.1":
+"@opentelemetry/sdk-trace-base@^1.7.0", "@opentelemetry/sdk-trace-base@1.15.1":
   "integrity" "sha512-5hccBe2yXzzXyExJNkTsIzDe1AM7HK0al+y/D2yEpslJqS1HUzsUSuCMY7Z4+Sfz5Gf0kTa6KYEt1QUQppnoBA=="
   "resolved" "https://registry.npmjs.org/@opentelemetry/sdk-trace-base/-/sdk-trace-base-1.15.1.tgz"
   "version" "1.15.1"
@@ -322,6 +331,18 @@
     "@opentelemetry/semantic-conventions" "0.25.0"
     "lodash.merge" "^4.6.2"
 
+"@opentelemetry/sdk-trace-node@^1.15.1":
+  "integrity" "sha512-aZDcuYHwh+qyOD/FLFAEAh32V2DlAp8Ubyaohh51oSssC3cxmN9JmpkyPbp2PQX3Mn48gBubwTXr9g++3+NB5w=="
+  "resolved" "https://registry.npmjs.org/@opentelemetry/sdk-trace-node/-/sdk-trace-node-1.15.1.tgz"
+  "version" "1.15.1"
+  dependencies:
+    "@opentelemetry/context-async-hooks" "1.15.1"
+    "@opentelemetry/core" "1.15.1"
+    "@opentelemetry/propagator-b3" "1.15.1"
+    "@opentelemetry/propagator-jaeger" "1.15.1"
+    "@opentelemetry/sdk-trace-base" "1.15.1"
+    "semver" "^7.5.1"
+
 "@opentelemetry/semantic-conventions@^1.0.0", "@opentelemetry/semantic-conventions@1.15.1":
   "integrity" "sha512-n8Kur1/CZlYG32YCEj30CoUqA8R7UyDVZzoEU6SDP+13+kXDT2kFVu6MpcnEUTyGP3i058ID6Qjp5h6IJxdPPQ=="
   "resolved" "https://registry.npmjs.org/@opentelemetry/semantic-conventions/-/semantic-conventions-1.15.1.tgz"
@@ -337,7 +358,7 @@
   "resolved" "https://registry.npmjs.org/@opentelemetry/semantic-conventions/-/semantic-conventions-0.25.0.tgz"
   "version" "0.25.0"
 
-"@opentelemetry/tracing@0.24.0":
+"@opentelemetry/tracing@^0.24.0", "@opentelemetry/tracing@0.24.0":
   "integrity" "sha512-sTLEs1SIon3xV8vLe53PzfbU0FahoxL9NPY/CYvA1mwGbMu4zHkHAjqy1Tc8JmqRrfa+XrHkmzeSM4hrvloBaA=="
   "resolved" "https://registry.npmjs.org/@opentelemetry/tracing/-/tracing-0.24.0.tgz"
   "version" "0.24.0"
