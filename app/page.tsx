@@ -46,8 +46,15 @@ const callApplicationServerThroughProxy = async () => {
 const Home = async () => {
   let didMyRequestGoThrough = false;
   try {
-    await callApplicationServerThroughProxy();
-    didMyRequestGoThrough = true;
+    let didCatch = false;
+    await callApplicationServerThroughProxy().catch((e) => {
+      didMyRequestGoThrough = false;
+      didCatch = true;
+    });
+
+    if (!didCatch) {
+      didMyRequestGoThrough = true;
+    }
   } catch (e) {
     console.error(e);
   }
