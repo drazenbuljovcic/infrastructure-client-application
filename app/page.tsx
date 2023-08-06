@@ -25,10 +25,15 @@ const callApplicationServerThroughProxy = async () => {
   console.log({ headers });
 
   try {
-    await fetch(url, {
+    const data = await fetch(url, {
       cache: "no-cache",
       headers,
-    }).then((res) => res.json());
+    })
+      .then((res) => res.json())
+      .catch((e) => {
+        console.error(e);
+        throw e;
+      });
 
     span.setStatus({
       code: SpanStatusCode.OK,
@@ -38,6 +43,7 @@ const callApplicationServerThroughProxy = async () => {
       code: SpanStatusCode.ERROR,
     });
     console.error(e);
+    throw e;
   } finally {
     span?.end();
   }
@@ -59,6 +65,7 @@ const Home = async () => {
     console.error(e);
   }
 
+  console.log({ didMyRequestGoThrough });
   return (
     <>
       <span>HERE I AM!!</span>
