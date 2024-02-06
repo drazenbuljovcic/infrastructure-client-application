@@ -11,6 +11,8 @@ const callApplicationServerThroughProxy = async () => {
   const path = "/distributed-information-node";
   const url = `${process.env.REVERSE_PROXY_HOST}${path}?sleep=1000`;
 
+  // TODO: move into the instrumentation middleware 
+  // https://nextjs.org/docs/app/building-your-application/optimizing/instrumentation
   const parentContext = context.active();
   const span = serverTracer.startSpan(
     `HTTP ${path}`,
